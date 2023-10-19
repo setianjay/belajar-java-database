@@ -1,13 +1,17 @@
 package com.setianjay.database;
 
 import com.setianjay.database.entity.Customer;
+import com.setianjay.database.entity.Employee;
 import com.setianjay.database.entity.User;
+import com.setianjay.database.enums.ExcelType;
+import com.setianjay.database.excel.data.EmployeeWorkbook;
 import com.setianjay.database.util.ConnectionUtil;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import com.setianjay.database.util.FileUtil;
+import org.junit.jupiter.api.*;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -226,6 +230,66 @@ class StatementTest {
                 System.out.println("Login failed, please enter correct username and password");
             }
         } catch (SQLException exception) {
+            exception.printStackTrace();
+            fail(exception);
+        }
+    }
+
+    /**
+     * This test will read exel file and store the data to database.
+     * */
+    @Test
+    @DisplayName(value = "batch process to insert 999 data from excel to database")
+    @Order(value = 8)
+    void testBatchProcess() {
+        String queryInsertEmployee = "INSERT INTO employee VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+
+        String excelFilePath = "D:\\Budel\\Employee Sample Data.xlsx";
+        File excelFile = new File(excelFilePath);
+        String excelFileExtension = FileUtil.getExtensionFile(excelFile.getName());
+
+        try (Connection connection = ConnectionUtil.getHikariDataSource().getConnection();
+             PreparedStatement statement = connection.prepareStatement(queryInsertEmployee);
+             FileInputStream inputStream = new FileInputStream(excelFile)) {
+
+            // get data employee from excel file
+            List<Employee> employeeListFromExcel = new EmployeeWorkbook(
+                    ExcelType.valueOf(excelFileExtension),
+                    inputStream
+            ).readDataInSingleSheet();
+
+            System.out.println(employeeListFromExcel.size());
+            assertEquals(999, employeeListFromExcel.size());
+
+            if (!employeeListFromExcel.isEmpty()) {
+                for (int i = 0; i < employeeListFromExcel.size(); i++) {
+                    statement.clearParameters();
+                    // set parameters
+                    statement.setString(1, employeeListFromExcel.get(i).getId());
+                    statement.setString(2, employeeListFromExcel.get(i).getFullName());
+                    statement.setString(3, employeeListFromExcel.get(i).getJobTitle());
+                    statement.setString(4, employeeListFromExcel.get(i).getDepartment());
+                    statement.setString(5, employeeListFromExcel.get(i).getBusinessUnit());
+                    statement.setString(6, employeeListFromExcel.get(i).getGender().getValue());
+                    statement.setString(7, employeeListFromExcel.get(i).getEthnicity());
+                    statement.setString(8, String.valueOf(employeeListFromExcel.get(i).getAge()));
+                    statement.setString(9, employeeListFromExcel.get(i).getHireDate());
+                    statement.setString(10, String.valueOf(employeeListFromExcel.get(i).getAnnualSalary()));
+                    statement.setString(11, employeeListFromExcel.get(i).getBonus());
+                    statement.setString(12, employeeListFromExcel.get(i).getCountry());
+                    statement.setString(13, employeeListFromExcel.get(i).getCity());
+                    statement.setString(14, employeeListFromExcel.get(i).getExitDate());
+                    statement.addBatch();
+
+                    if (i % 100 == 0) {
+                        if (i != 0) {
+                            statement.executeBatch(); // execute batch every one hundred data
+                        }
+                    }
+                }
+                statement.executeBatch(); // execute batch for rest of data
+            }
+        } catch (SQLException | IOException exception) {
             exception.printStackTrace();
             fail(exception);
         }
