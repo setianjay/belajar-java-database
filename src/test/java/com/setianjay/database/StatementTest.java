@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -292,6 +293,50 @@ class StatementTest {
         } catch (SQLException | IOException exception) {
             exception.printStackTrace();
             fail(exception);
+        }
+    }
+
+    /**
+     * This test will show how to insert date and time data type like DATE, TIME, DATETIME and TIMESTAMP FROM
+     * JDBC to MySQL.
+     * */
+    @Test
+    void testInsertDateAndTime(){
+        /*
+        * data type for dates is DATE
+        * data type for times is TIMES
+        * data type for datestimes is DATETIME
+        * data type for timesstamp is TIMESTAMP
+        * */
+        String insertDatesTimes = "INSERT INTO sample_time (dates, times, datestimes, timesstamp) VALUES (?, ?, ?, ?);";
+
+        try (Connection connection = ConnectionUtil.getHikariDataSource().getConnection();
+             PreparedStatement statement = connection.prepareStatement(insertDatesTimes)) {
+
+            statement.setDate(1, new Date(System.currentTimeMillis())); // to insert a date data type
+            statement.setTime(2, new Time(System.currentTimeMillis())); // to insert a time data type
+
+            java.util.Date currentDate = new java.util.Date();
+            // convert date to default format SQL DATE and TIME
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String currentDateTime = simpleDateFormat.format(currentDate);
+
+            statement.setString(3, currentDateTime); // to insert datetime data type
+            statement.setTimestamp(4, new Timestamp(System.currentTimeMillis())); // to insert timestamp data type
+
+            // or you can use this way to insert all date and time data type with string datetime
+//            statement.setString(1, currentDateTime);
+//            statement.setString(2, currentDateTime);
+//            statement.setString(3, currentDateTime);
+//            statement.setString(4, currentDateTime);
+
+            int rowAffected = statement.executeUpdate();
+            assertEquals(1, rowAffected);
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+            fail(exception);
+        } finally {
+            ConnectionUtil.close();
         }
     }
 }

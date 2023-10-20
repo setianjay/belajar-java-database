@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a53505ec-e87b-47d3-9558-b277dc58ba42" name="Changes" comment="test(query-statement): Implement query statement test to query data to mysql database&#10;&#10;This test shows to perform queries to the mysql database such as insert,&#10;delete, update and select. It also shows how sql injection occurs and&#10;how to prevent it.">
+    <list default="true" id="a53505ec-e87b-47d3-9558-b277dc58ba42" name="Changes" comment="test(query-statement): Implement query statement test to upload data in excel file to mysql database&#10;&#10;This test shows the insert process with a large amount of data into the&#10;database using a batch process.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/setianjay/database/StatementTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/setianjay/database/StatementTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +48,7 @@
     &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.StatementTest">
+  <component name="RunManager" selected="JUnit.StatementTest.testInsertDateAndTime">
     <configuration name="StatementTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="belajar-java-database" />
       <extension name="coverage">
@@ -81,7 +80,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StatementTest.testSelectAllStatement" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="StatementTest.testInsertDateAndTime" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="belajar-java-database" />
       <extension name="coverage">
         <pattern>
@@ -91,7 +90,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.setianjay.database" />
       <option name="MAIN_CLASS_NAME" value="com.setianjay.database.StatementTest" />
-      <option name="METHOD_NAME" value="testSelectAllStatement" />
+      <option name="METHOD_NAME" value="testInsertDateAndTime" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -131,11 +130,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.StatementTest.testInsertDateAndTime" />
         <item itemvalue="JUnit.StatementTest" />
         <item itemvalue="JUnit.StatementTest.testSuccessfullySqlInjectionWithStatementInLoginCase" />
         <item itemvalue="JUnit.StatementTest.testSqlInjectionWithPreparedStatementInLoginCase" />
         <item itemvalue="JUnit.StatementTest.testBatchProcess" />
-        <item itemvalue="JUnit.StatementTest.testSelectAllStatement" />
       </list>
     </recent_temporary>
   </component>
@@ -176,7 +175,21 @@
       <option name="project" value="LOCAL" />
       <updated>1697733988615</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="test(query-statement): Implement query statement test to query data to mysql database&#10;&#10;This test shows to perform queries to the mysql database such as insert,&#10;delete, update and select. It also shows how sql injection occurs and&#10;how to prevent it.">
+      <created>1697735354026</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1697735354026</updated>
+    </task>
+    <task id="LOCAL-00006" summary="test(query-statement): Implement query statement test to upload data in excel file to mysql database&#10;&#10;This test shows the insert process with a large amount of data into the&#10;database using a batch process.">
+      <created>1697735686208</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1697735686208</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -195,6 +208,7 @@
     <MESSAGE value="test(creation): Implement connection test to connect program to mysql database&#10;&#10;This test shows to establish a connection to the database either not&#10;using connection pool or using it with the help of HikariCP library." />
     <MESSAGE value="test(connection): Implement connection test to connect program to mysql database&#10;&#10;This test shows to establish a connection to the database either not&#10;using connection pool or using it with the help of HikariCP library." />
     <MESSAGE value="test(query-statement): Implement query statement test to query data to mysql database&#10;&#10;This test shows to perform queries to the mysql database such as insert,&#10;delete, update and select. It also shows how sql injection occurs and&#10;how to prevent it." />
-    <option name="LAST_COMMIT_MESSAGE" value="test(query-statement): Implement query statement test to query data to mysql database&#10;&#10;This test shows to perform queries to the mysql database such as insert,&#10;delete, update and select. It also shows how sql injection occurs and&#10;how to prevent it." />
+    <MESSAGE value="test(query-statement): Implement query statement test to upload data in excel file to mysql database&#10;&#10;This test shows the insert process with a large amount of data into the&#10;database using a batch process." />
+    <option name="LAST_COMMIT_MESSAGE" value="test(query-statement): Implement query statement test to upload data in excel file to mysql database&#10;&#10;This test shows the insert process with a large amount of data into the&#10;database using a batch process." />
   </component>
 </project>
