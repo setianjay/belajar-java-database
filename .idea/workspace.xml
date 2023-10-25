@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a53505ec-e87b-47d3-9558-b277dc58ba42" name="Changes" comment="test(query-statement): Implement query statement test to upload data in excel file to mysql database&#10;&#10;This test shows the insert process with a large amount of data into the&#10;database using a batch process.">
+    <list default="true" id="a53505ec-e87b-47d3-9558-b277dc58ba42" name="Changes" comment="test(query-statement): Implement query statement test to insert date and time data from jdbc to mysql&#10;&#10;This test shows how to insert data with data type date and time like&#10;DATE, TIME, DATETIME, and TIMESTAMP from JDBC to MySQL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/setianjay/database/StatementTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/setianjay/database/StatementTest.java" afterDir="false" />
     </list>
@@ -48,7 +48,7 @@
     &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.StatementTest.testInsertDateAndTime">
+  <component name="RunManager" selected="JUnit.StatementTest.testGetGeneratedKey">
     <configuration name="StatementTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="belajar-java-database" />
       <extension name="coverage">
@@ -64,7 +64,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StatementTest.testBatchProcess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="StatementTest.testGetGeneratedKey" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="belajar-java-database" />
       <extension name="coverage">
         <pattern>
@@ -74,7 +74,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.setianjay.database" />
       <option name="MAIN_CLASS_NAME" value="com.setianjay.database.StatementTest" />
-      <option name="METHOD_NAME" value="testBatchProcess" />
+      <option name="METHOD_NAME" value="testGetGeneratedKey" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -130,11 +130,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.StatementTest.testGetGeneratedKey" />
         <item itemvalue="JUnit.StatementTest.testInsertDateAndTime" />
         <item itemvalue="JUnit.StatementTest" />
         <item itemvalue="JUnit.StatementTest.testSuccessfullySqlInjectionWithStatementInLoginCase" />
         <item itemvalue="JUnit.StatementTest.testSqlInjectionWithPreparedStatementInLoginCase" />
-        <item itemvalue="JUnit.StatementTest.testBatchProcess" />
       </list>
     </recent_temporary>
   </component>
@@ -189,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697735686208</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="test(query-statement): Implement query statement test to insert date and time data from jdbc to mysql&#10;&#10;This test shows how to insert data with data type date and time like&#10;DATE, TIME, DATETIME, and TIMESTAMP from JDBC to MySQL">
+      <created>1697818518273</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1697818518273</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -209,6 +216,7 @@
     <MESSAGE value="test(connection): Implement connection test to connect program to mysql database&#10;&#10;This test shows to establish a connection to the database either not&#10;using connection pool or using it with the help of HikariCP library." />
     <MESSAGE value="test(query-statement): Implement query statement test to query data to mysql database&#10;&#10;This test shows to perform queries to the mysql database such as insert,&#10;delete, update and select. It also shows how sql injection occurs and&#10;how to prevent it." />
     <MESSAGE value="test(query-statement): Implement query statement test to upload data in excel file to mysql database&#10;&#10;This test shows the insert process with a large amount of data into the&#10;database using a batch process." />
-    <option name="LAST_COMMIT_MESSAGE" value="test(query-statement): Implement query statement test to upload data in excel file to mysql database&#10;&#10;This test shows the insert process with a large amount of data into the&#10;database using a batch process." />
+    <MESSAGE value="test(query-statement): Implement query statement test to insert date and time data from jdbc to mysql&#10;&#10;This test shows how to insert data with data type date and time like&#10;DATE, TIME, DATETIME, and TIMESTAMP from JDBC to MySQL" />
+    <option name="LAST_COMMIT_MESSAGE" value="test(query-statement): Implement query statement test to insert date and time data from jdbc to mysql&#10;&#10;This test shows how to insert data with data type date and time like&#10;DATE, TIME, DATETIME, and TIMESTAMP from JDBC to MySQL" />
   </component>
 </project>

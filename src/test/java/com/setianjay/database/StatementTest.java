@@ -301,6 +301,7 @@ class StatementTest {
      * JDBC to MySQL.
      * */
     @Test
+    @Order(value = 9)
     void testInsertDateAndTime(){
         /*
         * data type for dates is DATE
@@ -332,6 +333,42 @@ class StatementTest {
 
             int rowAffected = statement.executeUpdate();
             assertEquals(1, rowAffected);
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+            fail(exception);
+        } finally {
+            ConnectionUtil.close();
+        }
+    }
+
+    /**
+     * This test will show how to get last inserted id if the id in mysql is auto_increment.
+     * */
+    @Test
+    @Order(value = 10)
+    void testGetGeneratedKey(){
+        String insertDatesTimes = "INSERT INTO sample_time (dates, times, datestimes, timesstamp) VALUES (?, ?, ?, ?);";
+
+        try (Connection connection = ConnectionUtil.getHikariDataSource().getConnection();
+             PreparedStatement statement = connection.prepareStatement(insertDatesTimes, Statement.RETURN_GENERATED_KEYS)) {
+
+            java.util.Date currentDate = new java.util.Date();
+            // convert date to default format SQL DATE and TIME
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String currentDateTime = simpleDateFormat.format(currentDate);
+
+            statement.setString(1, currentDateTime);
+            statement.setString(2, currentDateTime);
+            statement.setString(3, currentDateTime);
+            statement.setString(4, currentDateTime);
+
+            int rowAffected = statement.executeUpdate();
+            assertEquals(1, rowAffected);
+
+            ResultSet resultSet = statement.getGeneratedKeys();
+            if(resultSet.next()){
+                System.out.println("ID for date and time is: " + resultSet.getInt(1));
+            }
         } catch (SQLException exception) {
             exception.printStackTrace();
             fail(exception);
